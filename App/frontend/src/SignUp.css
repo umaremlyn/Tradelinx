@@ -1,0 +1,115 @@
+.signup-bg {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #fafafd 60%, #fff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.signup-card {
+  background: #fff;
+  border-radius: 2em;
+  box-shadow: 0 4px 32px rgba(255,59,63,0.10);
+  padding: 2.5em 1.5em 2em 1.5em;
+  max-width: 350px;
+  width: 100%;
+  position: relative;
+}
+.signup-back {
+  position: absolute;
+  left: 1em;
+  top: 1.2em;
+  background: none;
+  border: none;
+  font-size: 1.3em;
+  color: #888;
+  cursor: pointer;
+}
+.signup-title {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 1em;
+}
+.signup-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5em;
+  gap: 1.5em;
+}
+.signup-tab {
+  background: none;
+  border: none;
+  font-size: 1.1em;
+  color: #888;
+  font-weight: 600;
+  border-bottom: 2.5px solid transparent;
+  padding: 0.2em 0.5em 0.4em 0.5em;
+  cursor: pointer;
+  transition: color 0.2s, border-bottom 0.2s;
+}
+.signup-tab.active {
+  color: #ff3b3f;
+  border-bottom: 2.5px solid #ff3b3f;
+}
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-bottom: 1.2em;
+}
+.signup-form label {
+  font-size: 1em;
+  color: #222;
+  font-weight: 500;
+  margin-bottom: 0.2em;
+}
+.signup-form input {
+  width: 100%;
+  padding: 0.7em 1em;
+  border: 1.5px solid #eee;
+  border-radius: 10px;
+  font-size: 1em;
+  font-family: inherit;
+  margin-top: 0.2em;
+  background: #fafafd;
+}
+.signup-phone {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.signup-flag {
+  font-size: 1.2em;
+}
+.signup-code {
+  font-size: 1em;
+  color: #888;
+  margin-right: 0.3em;
+}
+.signup-btn {
+  background: #ff3b3f;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 1em 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  margin-top: 0.5em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.signup-btn:active, .signup-btn:hover {
+  background: #ff6b6b;
+}
+.signup-login {
+  text-align: center;
+  font-size: 1em;
+  color: #888;
+  margin-top: 0.7em;
+}
+.signup-login-link {
+  color: #ff3b3f;
+  font-weight: 600;
+  cursor: pointer;
+}

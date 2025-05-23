@@ -1,0 +1,12 @@
+/* Minimal placeholder for BuyerOnboarding styles */
+
+.buyer-onboarding-root {
+  background: #fff;
+  color: #e10600;
+  font-family: 'Inter', 'DM Sans', sans-serif;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px #e1060022;
+  padding: 32px;
+  max-width: 400px;
+  margin: 40px auto;
+}

@@ -1,0 +1,77 @@
+.login-bg {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #fafafd 60%, #fff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-card {
+  background: #fff;
+  border-radius: 2em;
+  box-shadow: 0 4px 32px rgba(255,59,63,0.10);
+  padding: 2.5em 1.5em 2em 1.5em;
+  max-width: 350px;
+  width: 100%;
+  position: relative;
+}
+.login-title {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 1em;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-bottom: 1.2em;
+}
+.login-form label {
+  font-size: 1em;
+  color: #222;
+  font-weight: 500;
+  margin-bottom: 0.2em;
+}
+.login-form input {
+  width: 100%;
+  padding: 0.7em 1em;
+  border: 1.5px solid #eee;
+  border-radius: 10px;
+  font-size: 1em;
+  font-family: inherit;
+  margin-top: 0.2em;
+  background: #fafafd;
+}
+.login-btn {
+  background: #ff3b3f;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 1em 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  margin-top: 0.5em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.login-btn:active, .login-btn:hover {
+  background: #ff6b6b;
+}
+.login-error {
+  color: #ff3b3f;
+  font-size: 1em;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+.login-signup {
+  text-align: center;
+  font-size: 1em;
+  color: #888;
+  margin-top: 0.7em;
+}
+.login-signup-link {
+  color: #ff3b3f;
+  font-weight: 600;
+  cursor: pointer;
+}

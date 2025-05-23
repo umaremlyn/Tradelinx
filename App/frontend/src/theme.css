@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=DM+Sans:wght@400;700&display=swap');
+
+body {
+  font-family: 'Inter', 'DM Sans', Arial, sans-serif;
+  background: #fff;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-red: #ff3b3f;
+  --accent-red: #ff6b6b;
+  --background: #fff;
+  --text-main: #222;
+  --text-muted: #888;
+  --card-bg: #fff5f5;
+  --border-radius: 16px;
+}
+
+/* Example minimalist button */
+.button-red {
+  background: var(--primary-red);
+  color: #fff;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.75em 2em;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.button-red:active, .button-red:hover {
+  background: var(--accent-red);
+}
+
+/* Card style */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(255,59,63,0.06);
+  padding: 1.5em;
+  margin-bottom: 1em;
+}
+
+/* Minimalist input */
+input, select, textarea {
+  font-family: inherit;
+  border: 1px solid #eee;
+  border-radius: var(--border-radius);
+  padding: 0.75em 1em;
+  font-size: 1rem;
+  background: #fff;
+  margin-bottom: 1em;
+}
+
+/* Responsive helpers */
+@media (max-width: 600px) {
+  .card {
+    padding: 1em;
+  }
+  .button-red {
+    width: 100%;
+    padding: 1em 0;
+  }
+}

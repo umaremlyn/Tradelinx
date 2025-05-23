@@ -15,6 +15,7 @@ var adminUsersRouter = require('./routes/adminUsers');
 var marketplaceRouter = require('./routes/marketplace');
 var messagingRouter = require('./routes/messaging');
 var tradeRouter = require('./routes/trade');
+const waitlistRouter = require('./routes/waitlist');
 
 var app = express();
 
@@ -34,5 +35,6 @@ app.use('/admin', adminUsersRouter);
 app.use('/marketplace', marketplaceRouter);
 app.use('/marketplace/messages', messagingRouter);
 app.use('/marketplace/trades', tradeRouter);
+app.use('/api/waitlist', waitlistRouter);
 
 module.exports = app;
