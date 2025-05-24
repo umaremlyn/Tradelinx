@@ -1,6 +1,6 @@
 import React from 'react';
 import './WalletScreen.css';
-// TODO: Implement fetchWallet in ./api.js or update WalletScreen to use available API
+import { fetchWallet } from './api';
 
 const WalletScreen = () => {
   const [balance, setBalance] = React.useState(null);
@@ -9,16 +9,18 @@ const WalletScreen = () => {
   const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
-    // fetchWallet()
-    //   .then(data => {
-    //     setBalance(data.balance);
-    //     setTransactions(data.transactions);
-    //     setLoading(false);
-    //   })
-    //   .catch(err => {
-    //     setError('Could not load wallet');
-    //     setLoading(false);
-    //   });
+    // Replace 'userId' with actual user id from context or props
+    const userId = 'demo-user';
+    fetchWallet(userId)
+      .then(data => {
+        setBalance(data.balance);
+        setTransactions(data.transactions);
+        setLoading(false);
+      })
+      .catch(err => {
+        setError('Could not load wallet');
+        setLoading(false);
+      });
   }, []);
 
   if (loading) return <div className="wallet-container">Loading...</div>;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './AccountScreen.css';
-// import { fetchNotifications } from './api.extra';
-// TODO: Implement fetchNotifications in ./api.js or remove usage if not needed
+import { fetchNotifications } from './api';
+import AdminScreen from './AdminScreen';
 
 const user = {
   name: 'Ahmed Sisseh',
@@ -19,22 +19,15 @@ const menu = [
   { icon: '⏏️', label: 'Logout', logout: true },
 ];
 
-// Placeholder for fetchNotifications until implemented in ./api.js
-const fetchNotifications = async () => {
-  // Return mock notifications for now
-  return [
-    { id: 1, message: 'Your trade was approved.' },
-    { id: 2, message: 'New message from supplier.' }
-  ];
-};
-
 const AccountScreen = () => {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchNotifications()
+    // Replace 'userId' with actual user id from context or props
+    const userId = 'demo-user';
+    fetchNotifications(userId)
       .then(data => {
         setNotifications(data.notifications || []);
         setLoading(false);
@@ -44,6 +37,9 @@ const AccountScreen = () => {
         setLoading(false);
       });
   }, []);
+
+  // For demo, use hardcoded user. Replace with context in production.
+  const isAdmin = user.role && user.role.toLowerCase() === 'admin';
 
   return (
     <div className="account-container">
@@ -67,6 +63,13 @@ const AccountScreen = () => {
             <span className="account-menu-arrow">›</span>
           </button>
         ))}
+        {isAdmin && (
+          <button className="account-menu-item" style={{ color: '#e10600', fontWeight: 600 }} onClick={() => window.location.hash = '#/admin'}>
+            <span className="account-menu-icon">🛡️</span>
+            <span className="account-menu-label">Admin Dashboard</span>
+            <span className="account-menu-arrow">›</span>
+          </button>
+        )}
       </div>
       <div className="account-notification-container">
         {loading && <div>Loading...</div>}

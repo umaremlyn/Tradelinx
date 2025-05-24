@@ -1,6 +1,6 @@
 import React from 'react';
 import './ExploreScreen.css';
-// import { fetchMarkets } from './api'; // TODO: Implement fetchMarkets in ./api.js or update ExploreScreen to use available API
+import { fetchMarkets } from './api';
 
 const countries = ['All', 'Ghana', 'Nigeria', 'South Africa', 'Niger', 'Kenya'];
 
@@ -11,16 +11,14 @@ const ExploreScreen = () => {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    // fetchMarkets()
-    //   .then(data => {
-    //     setMarkets(data.markets || []);
-    //     setLoading(false);
-    //   })
-    //   .catch(() => {
-    //     setError('Could not load markets');
-    //     setLoading(false);
-    //   });
-    setLoading(false); // Remove this line after implementing fetchMarkets
+    fetchMarkets()
+      .then(data => {
+        setMarkets(data.products || []);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
   }, []);
 
   const filteredMarkets = markets.filter(m =>

@@ -1,26 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './HomeScreen.css';
-
-// This would be fetched from the backend in a real app
-const fetchPosts = async () => {
-  // Simulate API call
-  return [
-    {
-      id: 1,
-      business: 'Business Username',
-      slogan: 'Your Business Slogan Here',
-      image: '',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    },
-    {
-      id: 2,
-      business: 'Business Username',
-      slogan: 'Your Business Slogan Here',
-      image: '',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    },
-  ];
-};
+import { fetchPosts } from './api';
 
 const HomeScreen = () => {
   const [posts, setPosts] = useState([]);

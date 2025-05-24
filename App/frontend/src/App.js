@@ -11,6 +11,7 @@ import WalletScreen from './WalletScreen';
 import ExploreScreen from './ExploreScreen';
 import TradeScreen from './TradeScreen';
 import AccountScreen from './AccountScreen';
+import AdminScreen from './AdminScreen';
 import './App.css';
 
 function MainApp() {
@@ -72,6 +73,11 @@ function MainApp() {
       );
     }
     return <LandingPage onStart={() => setRoute('login')} onWaitlist={() => setRoute('waitlist')} onSignUp={() => setRoute('signup')} />;
+  }
+
+  // Add admin route handling
+  if (window.location.hash === '#/admin') {
+    return <AdminScreen />;
   }
 
   // After login, show onboarding if not approved

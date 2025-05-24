@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './NegotiationScreen.css';
-// import { fetchMessages } from './api.extra';
-// TODO: Implement fetchMessages in ./api.js or remove usage if not needed
+import { fetchMessages } from './api';
 
 const conversationId = 'demo'; // Replace with actual conversation id from backend or route
 
@@ -12,7 +11,10 @@ const NegotiationScreen = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchMessages(conversationId)
+    // Replace with real user IDs
+    const user1 = 'user1';
+    const user2 = 'user2';
+    fetchMessages(conversationId, user1, user2)
       .then(data => {
         setMessages(data.messages || []);
         setLoading(false);

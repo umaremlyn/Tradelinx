@@ -1,22 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './TradeScreen.css';
-// import { fetchTradeOffers } from './api.extra';
-// TODO: Implement fetchTradeOffers in ./api.js or remove usage if not needed
-
-// Placeholder for fetchTradeOffers until implemented in ./api.js
-const fetchTradeOffers = async (type) => {
-  // Return mock data for now
-  if (type === 'offers') {
-    return [
-      { id: 1, title: 'Crude Oil', details: '1000 barrels, Lagos', image: '', type: 'offer' },
-      { id: 2, title: 'Cocoa Beans', details: '50 tons, Ibadan', image: '', type: 'offer' }
-    ];
-  } else {
-    return [
-      { id: 3, title: 'Buy 500 barrels', details: 'Buyer: Acme Corp', image: '', type: 'request' }
-    ];
-  }
-};
+import { fetchTradeOffers } from './api';
 
 const TradeScreen = () => {
 	const [tab, setTab] = useState('offers');
