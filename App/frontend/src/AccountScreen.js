@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './AccountScreen.css';
 import { fetchNotifications } from './api';
-import AdminScreen from './AdminScreen';
 
 const user = {
   name: 'Ahmed Sisseh',
