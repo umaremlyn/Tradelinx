@@ -1,3 +1,5 @@
+const API_BASE = process.env.REACT_APP_API_BASE_URL || '';
+
 // Supplier onboarding: submit business name, CAC, and license files
 export async function submitSupplierOnboarding({ userId, businessName, cacFile, licenseFile }) {
   const formData = new FormData();
@@ -8,7 +10,7 @@ export async function submitSupplierOnboarding({ userId, businessName, cacFile, 
   // regulated is true if licenseFile is provided
   formData.append('regulated', !!licenseFile);
 
-  const res = await fetch('/api/onboarding/supplier', {
+  const res = await fetch(`${API_BASE}/api/onboarding/supplier`, {
     method: 'POST',
     body: formData,
     credentials: 'include',
@@ -19,7 +21,7 @@ export async function submitSupplierOnboarding({ userId, businessName, cacFile, 
 
 // Buyer onboarding: submit business/legal name
 export async function submitBuyerOnboarding({ userId, businessName }) {
-  const res = await fetch('/api/onboarding/buyer', {
+  const res = await fetch(`${API_BASE}/api/onboarding/buyer`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
@@ -31,7 +33,7 @@ export async function submitBuyerOnboarding({ userId, businessName }) {
 
 // Login API helper
 export async function fetchLogin(email, password) {
-  const res = await fetch('/api/auth/login', {
+  const res = await fetch(`${API_BASE}/api/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
@@ -43,7 +45,7 @@ export async function fetchLogin(email, password) {
 
 // Register API helper
 export async function fetchRegister(email, password, role, name, phone, address) {
-  const res = await fetch('/api/auth/signup', {
+  const res = await fetch(`${API_BASE}/api/auth/signup`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
@@ -63,21 +65,21 @@ export async function fetchRegister(email, password, role, name, phone, address)
 // Fetch trade offers and requests
 export async function fetchTradeOffers(type) {
   // type: 'offers' or 'requests'
-  const res = await fetch(`/api/marketplace/trades?type=${type}`);
+  const res = await fetch(`${API_BASE}/api/marketplace/trades?type=${type}`);
   if (!res.ok) throw new Error('Failed to fetch trade data');
   return res.json();
 }
 
 // Fetch all products/markets for ExploreScreen
 export async function fetchMarkets() {
-  const res = await fetch('/api/marketplace/products');
+  const res = await fetch(`${API_BASE}/api/marketplace/products`);
   if (!res.ok) throw new Error('Failed to fetch markets');
   return res.json();
 }
 
 // Fetch posts/feed for HomeScreen
 export async function fetchPosts() {
-  const res = await fetch('/api/marketplace/products'); // Using products as feed for MVP
+  const res = await fetch(`${API_BASE}/api/marketplace/products`); // Using products as feed for MVP
   if (!res.ok) throw new Error('Failed to fetch feed');
   const data = await res.json();
   // Map products to feed post format
@@ -92,7 +94,7 @@ export async function fetchPosts() {
 
 // Fetch wallet info for WalletScreen
 export async function fetchWallet(userId) {
-  const res = await fetch(`/api/users/${userId}/wallet`);
+  const res = await fetch(`${API_BASE}/api/users/${userId}/wallet`);
   if (!res.ok) throw new Error('Failed to fetch wallet');
   return res.json();
 }
@@ -100,14 +102,14 @@ export async function fetchWallet(userId) {
 // Fetch messages for NegotiationScreen
 export async function fetchMessages(conversationId, user1, user2) {
   // user1 and user2 are user IDs
-  const res = await fetch(`/api/marketplace/messages?user1=${user1}&user2=${user2}`);
+  const res = await fetch(`${API_BASE}/api/marketplace/messages?user1=${user1}&user2=${user2}`);
   if (!res.ok) throw new Error('Failed to fetch messages');
   return res.json();
 }
 
 // Send a message
 export async function sendMessage({ senderId, receiverId, productId, content }) {
-  const res = await fetch('/api/marketplace/messages', {
+  const res = await fetch(`${API_BASE}/api/marketplace/messages`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ senderId, receiverId, productId, content })
@@ -118,7 +120,7 @@ export async function sendMessage({ senderId, receiverId, productId, content }) 
 
 // Fetch notifications for AccountScreen
 export async function fetchNotifications(userId) {
-  const res = await fetch(`/api/users/${userId}/notifications`);
+  const res = await fetch(`${API_BASE}/api/users/${userId}/notifications`);
   if (!res.ok) throw new Error('Failed to fetch notifications');
   return res.json();
 }
@@ -127,7 +129,7 @@ export async function fetchNotifications(userId) {
 
 // Get all supplier applications (optionally filter by status)
 export async function fetchSupplierApplications(status) {
-  const url = status ? `/api/admin/suppliers?status=${status}` : '/api/admin/suppliers';
+  const url = status ? `${API_BASE}/api/admin/suppliers?status=${status}` : `${API_BASE}/api/admin/suppliers`;
   const res = await fetch(url);
   if (!res.ok) throw new Error('Failed to fetch supplier applications');
   return res.json();
@@ -135,14 +137,14 @@ export async function fetchSupplierApplications(status) {
 
 // Approve a supplier application
 export async function approveSupplier(id) {
-  const res = await fetch(`/api/admin/suppliers/${id}/approve`, { method: 'POST' });
+  const res = await fetch(`${API_BASE}/api/admin/suppliers/${id}/approve`, { method: 'POST' });
   if (!res.ok) throw new Error('Failed to approve supplier');
   return res.json();
 }
 
 // Reject a supplier application
 export async function rejectSupplier(id, reason) {
-  const res = await fetch(`/api/admin/suppliers/${id}/reject`, {
+  const res = await fetch(`${API_BASE}/api/admin/suppliers/${id}/reject`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ reason })
@@ -153,7 +155,7 @@ export async function rejectSupplier(id, reason) {
 
 // Get all users (optionally filter by role or flagged)
 export async function fetchUsers(role, flagged) {
-  let url = '/api/admin/users';
+  let url = `${API_BASE}/api/admin/users`;
   const params = [];
   if (role) params.push(`role=${role}`);
   if (flagged) params.push('flagged=true');
@@ -165,14 +167,14 @@ export async function fetchUsers(role, flagged) {
 
 // Flag a user
 export async function flagUser(id) {
-  const res = await fetch(`/api/admin/users/${id}/flag`, { method: 'POST' });
+  const res = await fetch(`${API_BASE}/api/admin/users/${id}/flag`, { method: 'POST' });
   if (!res.ok) throw new Error('Failed to flag user');
   return res.json();
 }
 
 // Change user role
 export async function changeUserRole(id, role) {
-  const res = await fetch(`/api/admin/users/${id}/role`, {
+  const res = await fetch(`${API_BASE}/api/admin/users/${id}/role`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ role })
@@ -183,7 +185,7 @@ export async function changeUserRole(id, role) {
 
 // Get all messages (optionally filter by flagged)
 export async function fetchMessagesAdmin(flagged) {
-  const url = flagged ? '/api/admin/messages?flagged=true' : '/api/admin/messages';
+  const url = flagged ? `${API_BASE}/api/admin/messages?flagged=true` : `${API_BASE}/api/admin/messages`;
   const res = await fetch(url);
   if (!res.ok) throw new Error('Failed to fetch messages');
   return res.json();
@@ -191,7 +193,7 @@ export async function fetchMessagesAdmin(flagged) {
 
 // Flag a message
 export async function flagMessage(id) {
-  const res = await fetch(`/api/admin/messages/${id}/flag`, { method: 'POST' });
+  const res = await fetch(`${API_BASE}/api/admin/messages/${id}/flag`, { method: 'POST' });
   if (!res.ok) throw new Error('Failed to flag message');
   return res.json();
 }
